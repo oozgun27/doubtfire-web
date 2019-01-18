@@ -31,6 +31,36 @@
     border-bottom-right-radius: 0;
     border-bottom-width: 0;
   }
+
+  @media screen and (max-width:767px){
+
+    display: block;
+    .dropdown {
+      &.btn-group {
+        width: 100%;
+        .btn {
+          width: 100%;
+        }
+      }
+      &.open .dropdown-menu {
+        float: left;
+        width: 100%;
+        background: #fff;
+      }
+    }
+
+   & > li {
+     display: block;
+     width: 100%;
+     text-align: center;
+     margin: 5px 0;
+     height: auto;
+     & + li:before {
+       content: none;
+     }
+   }
+
+  }
 }
 
 .dropdown-user .user-icon {

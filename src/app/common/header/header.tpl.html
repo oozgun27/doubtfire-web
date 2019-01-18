@@ -10,7 +10,7 @@
   </div>
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'" ng-show="!navCollapsed">
-    <ul class="nav navbar-nav navbar-left">
+    <div class="nav navbar-nav navbar-left">
       <ul class="breadcrumb">
         <li>
           <a class="home" ui-sref="home">
@@ -70,7 +70,7 @@
                 <a ui-sref="units/analytics({unitId: project.unit_id})">Unit Analytics</a>
               </li>
             </ul><!--/teaching-tasks-->
-          <div>
+        </div>
         </li>
         <li ng-if="task" ng-if="tutor">
           <div class="btn-group" dropdown>
