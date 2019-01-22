@@ -1,5 +1,5 @@
 //
-// Overrides for the body (i.e., global overrdies)
+// Overrides for the body (i.e., global overrides)
 //
 $main-view-top-padding: 30px;
 $main-view-bottom-padding: $main-view-top-padding;
@@ -10,7 +10,7 @@ body {
   font-size: 1.2em;
   line-height: 2;
 }
-body > [ui-view="header"]:not(:empty) + [ui-view="main"] {
+body > [ui-view="header"]:not(:empty) + .container-fluid {
   padding-top: $main-view-top-padding;
   padding-bottom: $main-view-bottom-padding;
 }
