@@ -1,12 +1,12 @@
 #home .cards {
-  display: flex;
-  flex-wrap: wrap;
+
   padding: 0 15px;
-  align-items: flex-start;
+
   .card {
-    width: 30%;
     margin: 0 auto;
-    display: inline-block;
+    @media screen and (max-width: $screen-sm) {
+      margin-bottom: 15px;
+    }
   }
 }
 #home .card header {
