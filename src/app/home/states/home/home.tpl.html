@@ -8,65 +8,71 @@
     </p>
   </div>
   <div class="cards" ng-hide="notEntrolled()">
-    <div class="card card-primary" if-role="Tutor Convenor Admin" >
-      <div class="card-heading">
-        <h4>Units You Teach</h4>
+      <div class="col-md-4">
+        <div class="card card-primary" if-role="Tutor Convenor Admin" >
+          <div class="card-heading">
+            <h4>Units You Teach</h4>
+          </div>
+          <div class="list-group" ng-show="filteredUnitRoles.length > 0">
+            <a ng-repeat="unitRole in filteredUnitRoles = (unitRoles | isActiveUnitRole)" ui-sref="units/tasks/inbox({unitId: unitRole.unit_id})" class="list-group-item">
+              <header>
+                {{unitRole.unit_name}}
+              </header>
+              <p>
+                <label class="label label-default">{{showDate(unitRole.start_date)}}</label>
+                <label class="label label-info">{{unitRole.unit_code}}</label>
+                <label class="label label-primary">{{unitRole.role}}</label>
+              </p>
+            </a>
+          </div>
+          <div class="card-body" ng-hide="filteredUnitRoles.length > 0">
+            You do not teach any active units
+          </div>
+        </div><!--/units-taught-->
       </div>
-      <div class="list-group" ng-show="filteredUnitRoles.length > 0">
-        <a ng-repeat="unitRole in filteredUnitRoles = (unitRoles | isActiveUnitRole)" ui-sref="units/tasks/inbox({unitId: unitRole.unit_id})" class="list-group-item">
-          <header>
-            {{unitRole.unit_name}}
-          </header>
-          <p>
-            <label class="label label-default">{{showDate(unitRole.start_date)}}</label>
-            <label class="label label-info">{{unitRole.unit_code}}</label>
-            <label class="label label-primary">{{unitRole.role}}</label>
-          </p>
-        </a>
+      <div class="col-md-4">
+        <div class="card card-primary" ng-show="projects.length > 0">
+          <div class="card-heading">
+            <h4>Units You Study</h4>
+          </div>
+          <div class="list-group">
+            <a ng-repeat="project in projects" ui-sref='projects/dashboard({projectId: project.project_id})' class="list-group-item">
+              <header>
+                {{project.unit_name}}
+              </header>
+              <p>
+                <label class="label label-default">{{showDate(project.start_date)}}</label>
+                <label class="label label-info">{{project.unit_code}}</label>
+              </p>
+            </a>
+          </div>
+        </div><!--/units-taught-->
       </div>
-      <div class="card-body" ng-hide="filteredUnitRoles.length > 0">
-        You do not teach any active units
+      <div class="col-md-4">
+        <div class="card card-primary" if-role="Admin Convenor">
+          <div class="card-heading">
+            <h4>Administration</h4>
+          </div>
+          <div class="list-group">
+            <a class="list-group-item" ui-sref="admin/units">
+              <header>
+                Administer Units
+              </header>
+              <p class="text-muted">
+                Add new units, or modify existing units you have convenor access to.
+              </p>
+            </a>
+            <a class="list-group-item" ui-sref="admin/users">
+              <header>
+                Administer Users
+              </header>
+              <p class="text-muted">
+                Add, modify or remove existing users.
+              </p>
+            </a>
+          </div><!--/admin-->
+        </div>
       </div>
-    </div><!--/units-taught-->
-    <div class="card card-primary" ng-show="projects.length > 0">
-      <div class="card-heading">
-        <h4>Units You Study</h4>
-      </div>
-      <div class="list-group">
-        <a ng-repeat="project in projects" ui-sref='projects/dashboard({projectId: project.project_id})' class="list-group-item">
-          <header>
-            {{project.unit_name}}
-          </header>
-          <p>
-            <label class="label label-default">{{showDate(project.start_date)}}</label>
-            <label class="label label-info">{{project.unit_code}}</label>
-          </p>
-        </a>
-      </div>
-    </div><!--/units-taught-->
-    <div class="card card-primary" if-role="Admin Convenor">
-      <div class="card-heading">
-        <h4>Administration</h4>
-      </div>
-      <div class="list-group">
-        <a class="list-group-item" ui-sref="admin/units">
-          <header>
-            Administer Units
-          </header>
-          <p class="text-muted">
-            Add new units, or modify existing units you have convenor access to.
-          </p>
-        </a>
-        <a class="list-group-item" ui-sref="admin/users">
-          <header>
-            Administer Users
-          </header>
-          <p class="text-muted">
-            Add, modify or remove existing users.
-          </p>
-        </a>
-      </div><!--/admin-->
-    </div>
   </div>
   <div class="spinner" ng-hide="dataLoaded">
     <i class="fa fa-pulse fa-4x fa-spinner" ng-show="showSpinner"></i>
